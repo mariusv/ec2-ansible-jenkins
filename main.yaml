@@ -1,0 +1,9 @@
+---
+- name:  Set up Jenkins
+  hosts: launched
+  gather_facts: true
+  sudo: yes
+
+
+  roles:
+    - { role: jenkins, tags: ["jenkins"] }

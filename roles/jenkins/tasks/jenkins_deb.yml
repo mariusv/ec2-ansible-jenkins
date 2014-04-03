@@ -1,0 +1,10 @@
+
+    - name: Ensure Jenkins deb repo is present
+      apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/' state=present
+
+    - name: Add keychain for Jenkins CI repositories
+      apt_key: url=http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key state=present
+    - apt: name={{item}} state=latest force=yes
+      with_items:
+      - python-software-properties
+      - jenkins

@@ -1,0 +1,10 @@
+
+    - name: Ensure Jenkins Yum repo present
+      get_url: url=http://pkg.jenkins-ci.org/redhat/jenkins.repo
+               dest=/etc/yum.repos.d/jenkins.repo mode=0644
+
+    - name: Ensure Jenkins GPG key installed
+      command: rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+    - yum: name={{item}} state=latest
+      with_items:
+      - jenkins
